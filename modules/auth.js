@@ -50,7 +50,7 @@ const initAuth = async (otpPreference = OTP_METHOD.APP) => {
       sessionId = client.session.save();
       updateCredentials({ sessionId });
       logMessage.info(
-        `To avoid login again and again session id has been saved to config.json, please don't share it with anyone`
+        `To avoid login again and again session id has been saved to config.json, please don't share it with anyone`,
       );
     }
 

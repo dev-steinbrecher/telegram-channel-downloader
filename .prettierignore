@@ -1,0 +1,8 @@
+# Ignore artifacts:
+build
+coverage
+export
+reame.md
+config.json
+.idea
+*.md

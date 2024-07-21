@@ -51,7 +51,7 @@ const textInput = async (message = "Please Enter") => {
 const numberInput = async (
   message = "Please enter a number",
   min = -Infinity,
-  max = Infinity
+  max = Infinity,
 ) => {
   const question = {
     type: "input",
@@ -100,7 +100,7 @@ const selectInput = async (message = "Please select", optionsArr = []) => {
 const multipleChoice = async (
   message = "Please select multiple choices",
   optionsArr,
-  defaultOptions = []
+  defaultOptions = [],
 ) => {
   const question = {
     type: "checkbox",
@@ -108,11 +108,10 @@ const multipleChoice = async (
     message: message,
     default: defaultOptions,
     choices: optionsArr,
-  }
+  };
   const { input } = await inquirer.prompt(question);
   return input;
 };
-
 
 const downloadOptionInput = async () => {
   let fileTypeArray = [
@@ -129,17 +128,17 @@ const downloadOptionInput = async () => {
     MEDIA_TYPES.IMAGE,
     MEDIA_TYPES.VIDEO,
     MEDIA_TYPES.AUDIO,
-    'pdf'
+    "pdf",
   ];
   let fileExtensions = await multipleChoice(
     "Choose file to download",
     fileTypeArray,
-    defaultSelected
+    defaultSelected,
   );
 
   if (fileExtensions?.includes("custom")) {
     let customExtensions = await textInput(
-      "Enter file extension separated by comma: "
+      "Enter file extension separated by comma: ",
     );
     const customExtensionsArray = customExtensions
       ?.split(",")
@@ -170,5 +169,5 @@ module.exports = {
   booleanInput,
   selectInput,
   multipleChoice,
-  downloadOptionInput
+  downloadOptionInput,
 };

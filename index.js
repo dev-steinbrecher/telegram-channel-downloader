@@ -2,12 +2,14 @@ const fs = require("fs");
 const { getMessages } = require("./modules/messages");
 const { getLastSelection } = require("./utils/file_helper");
 const { initAuth } = require("./modules/auth");
-const { searchDialog, selectDialog, getDialogName, getAllDialogs} = require("./modules/dialoges");
-const { logMessage, MEDIA_TYPES } = require("./utils/helper");
 const {
-  booleanInput,
-  downloadOptionInput,
-} = require("./utils/input_helper");
+  searchDialog,
+  selectDialog,
+  getDialogName,
+  getAllDialogs,
+} = require("./modules/dialoges");
+const { logMessage, MEDIA_TYPES } = require("./utils/helper");
+const { booleanInput, downloadOptionInput } = require("./utils/input_helper");
 
 let { channelId } = getLastSelection();
 var client = null;
@@ -36,9 +38,11 @@ var client = null;
 })();
 
 async function searchOrListChannel(dialogs) {
-  const searchOrListChannel = await booleanInput("Do you want to search for a channel? If not, all channels will be listed.");
+  const searchOrListChannel = await booleanInput(
+    "Do you want to search for a channel? If not, all channels will be listed.",
+  );
   if (searchOrListChannel) {
-    channelId = await searchDialog(dialogs)
+    channelId = await searchDialog(dialogs);
   } else {
     channelId = await selectDialog(dialogs);
   }

@@ -1,7 +1,7 @@
 {
   "name": "telegram-channel-downloader",
   "version": "1.0.0",
-  "description": "scrap and download all media and message from telegram channel, group or a user",
+  "description": "scrape and download all media and message from telegram channel, group or a user",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
@@ -20,7 +20,7 @@
   "keywords": [
     "telegram",
     "node.js",
-    "scrapper"
+    "scraper"
   ],
   "author": "abhishekjnvk",
   "license": "ISC",
@@ -33,5 +33,8 @@
     "inquirer": "^8.2.6",
     "mime-db": "^1.52.0",
     "telegram": "^2.21.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
   }
 }

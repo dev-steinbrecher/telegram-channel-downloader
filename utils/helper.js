@@ -118,7 +118,7 @@ const getMediaPath = (message, outputFolder) => {
       let docAttributes = message?.media?.document?.attributes;
       if (docAttributes) {
         let fileNameObj = docAttributes.find(
-          (e) => e.className == "DocumentAttributeFilename"
+          (e) => e.className == "DocumentAttributeFilename",
         );
         if (fileNameObj) {
           fileName = `${fileNameObj.fileName}`;
@@ -211,7 +211,7 @@ const circularStringify = (circularString, indent = 2) => {
           ? undefined // Duplicate reference found, discard key
           : cache.push(value) && value // Store value in our collection
         : value,
-    indent
+    indent,
   );
   cache = null;
   return retVal;
