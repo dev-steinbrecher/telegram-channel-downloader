@@ -118,7 +118,7 @@ const getMediaPath = (message, outputFolder) => {
       let docAttributes = message?.media?.document?.attributes;
       if (docAttributes) {
         let fileNameObj = docAttributes.find(
-          (e) => e.className == "DocumentAttributeFilename",
+          (e) => e.className === "DocumentAttributeFilename",
         );
         if (fileNameObj) {
           fileName = `${fileNameObj.fileName}`;
@@ -190,7 +190,7 @@ const logMessage = {
 
 const wait = (second) => {
   logMessage.debug(`Waiting for ${second} seconds to avoid blocking`);
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
     }, second * 1000);
@@ -223,7 +223,7 @@ const appendToJSONArrayFile = (filePath, dataToAppend) => {
       fs.writeFileSync(filePath, circularStringify([dataToAppend], null, 2));
     } else {
       fs.readFile(filePath, function (err, data) {
-        var json = JSON.parse(data);
+        const json = JSON.parse(data);
         json.push(dataToAppend);
         fs.writeFileSync(filePath, circularStringify(json, null, 2));
       });

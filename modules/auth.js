@@ -1,5 +1,4 @@
-const inquirer = require("inquirer");
-
+require("inquirer");
 const { TelegramClient } = require("telegram");
 const { updateCredentials, getCredentials } = require("../utils/file_helper");
 
@@ -20,7 +19,7 @@ const OTP_METHOD = {
 };
 
 const initAuth = async (otpPreference = OTP_METHOD.APP) => {
-  client = new TelegramClient(stringSession, apiId, apiHash, {
+  let client = new TelegramClient(stringSession, apiId, apiHash, {
     connectionRetries: 5,
   });
 
@@ -32,7 +31,7 @@ const initAuth = async (otpPreference = OTP_METHOD.APP) => {
       ]);
     }
 
-    const forceSMS = otpPreference == OTP_METHOD.SMS ? true : false;
+    const forceSMS = otpPreference === OTP_METHOD.SMS;
     await client.start({
       phoneNumber: async () => await mobileNumberInput(),
       password: async () => await textInput("Enter your password"),

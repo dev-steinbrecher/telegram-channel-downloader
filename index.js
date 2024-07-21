@@ -12,7 +12,7 @@ const { logMessage, MEDIA_TYPES } = require("./utils/helper");
 const { booleanInput, downloadOptionInput } = require("./utils/input_helper");
 
 let { channelId } = getLastSelection();
-var client = null;
+let client = null;
 
 (async () => {
   if (!fs.existsSync("./export")) {

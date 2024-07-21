@@ -31,7 +31,6 @@ const getAllDialogs = async (client, sortByName = true) => {
       phone: d.entity?.phone,
       firstName: d.entity?.firstName?.trim(),
       lastName: d.entity?.lastName?.trim(),
-      username: d.entity?.username?.trim(),
       name: d.title?.trim(),
       id: d.id,
       type: getDialogType(d),
@@ -76,8 +75,8 @@ async function userDialogSelection(dialogs) {
     process.exit(0);
   }
 
-  let selectedChannel = dialogs[selectedChannelNumber - 1];
-  channelId = selectedChannel.id;
+  const selectedChannel = dialogs[selectedChannelNumber - 1];
+  const channelId = selectedChannel.id;
   logMessage.info(`Selected channel: ${selectedChannel.name}`);
 
   //save channelId into last selection
@@ -120,7 +119,7 @@ const getDialogName = (channelId) => {
   try {
     let dialogs = require("../export/dialog_list.json");
     if (dialogs) {
-      let dialog = dialogs.find((d) => d.id == channelId);
+      let dialog = dialogs.find((d) => d.id === channelId);
       if (dialog) {
         return dialog.name;
       }

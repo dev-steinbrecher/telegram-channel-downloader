@@ -22,8 +22,7 @@ const updateCredentials = (obj) => {
 const getCredentials = () => {
   try {
     const data = fs.readFileSync(path.join(__dirname, configFile));
-    const credentials = JSON.parse(data);
-    return credentials;
+    return JSON.parse(data);
   } catch (err) {
     logMessage.error(
       "Please add your credentials in config.json file, follow https://github.com/abhishekjnvk/telegram-channel-downloader#setup for more info",
@@ -35,8 +34,7 @@ const getCredentials = () => {
 const getLastSelection = () => {
   try {
     const data = fs.readFileSync(path.join(__dirname, lastSelectionFile));
-    const last = JSON.parse(data);
-    return last;
+    return JSON.parse(data);
   } catch (err) {
     return {};
   }
